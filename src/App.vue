@@ -1,28 +1,27 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<div id="app">
+		<button @click="showDrowdown">show</button>
+		<VueDropDown id="dropdown:navbar" :items="items" />
+	</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import VueDropDown from "./components/VueDropDown";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+	name: "App",
+	data() {
+		return {
+			items: ["apple", "orange", "banana"]
+		}
+	},
+	methods: {
+		showDrowdown() {
+			this.$vuedropdown.show("dropdown:navbar")
+		}
+	},
+	components: {
+		VueDropDown
+	}
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
