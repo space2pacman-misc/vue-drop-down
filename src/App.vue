@@ -1,8 +1,7 @@
 <template>
 	<div id="app">
 		<button for-id="dropdown:navbar" @click="showDrowdown">show</button>
-		<VueDropDown id="dropdown:navbar" :items="items" @onSelected="onSelected" :active="active" />
-		
+		<VueDropDown id="dropdown:navbar" :items="dropdown.items" @onSelected="onSelected" :active="dropdown.active" />
 	</div>
 </template>
 
@@ -13,16 +12,18 @@ export default {
 	name: "App",
 	data() {
 		return {
-			active: "apple",
-			items: ["apple", "orange", "banana"]
+			dropdown: {
+				active: "apple",
+				items: ["apple", "orange", "banana"]
+			}
 		}
 	},
 	methods: {
 		showDrowdown() {
-			this.$vuedropdown.show("dropdown:navbar")
+			this.$vuedropdown.show("dropdown:navbar");
 		},
 		onSelected(name) {
-			this.active = name;
+			this.dropdown.active = name;
 		}
 	},
 	components: {
