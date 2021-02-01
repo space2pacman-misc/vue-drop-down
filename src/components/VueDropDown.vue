@@ -5,8 +5,8 @@
 				<div 
 					v-for="(item, index) in items"
 					:key="index"
-					class="dropdown__item"
 					:class="{ 'dropdown__item--active': item === active }"
+					class="dropdown__item"
 					@click="onSelect(item)"
 				>
 					{{ item }}
@@ -28,20 +28,21 @@ export default {
 		onSelect(value) {
 			this.$emit("onSelected", value);
 			this.isOpen = false;
-		}
-	},
-	mounted() {
-		this.$root.$on("vuedropdown:show", name => {
+		},
+		onDropdownShow(name) {
 			if(this.id === name) {
 				this.isOpen = !this.isOpen;
 			}
-		});
-
-		document.body.addEventListener("click", event => {
+		},
+		onDocumentClick(event) {
 			if(event.target.getAttribute("for-id") !== this.id) {
 				this.isOpen = false;
 			}
-		});
+		}
+	},
+	mounted() {
+		this.$root.$on("vuedropdown:show", this.onDropdownShow);
+		document.body.addEventListener("click", this.onDocumentClick);
 	},
 	props: {
 		id: String,
