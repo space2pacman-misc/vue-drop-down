@@ -90,38 +90,6 @@ export default {
 	position: relative;
     margin-left: 22px;
 }
-.dropdown__button {
-	border: 1px solid #415165;
-	box-sizing: border-box;
-	font-size: 17px;
-	padding: 7px 12px;
-	width: 165px;
-	color: #BA9D5A;
-	cursor: pointer;
-	border-radius: 5px;
-	color: #fff;
-	position: relative;
-}
-.dropdown__button:after {
-	content: "";
-	display: block;
-	width: 16px;
-	height: 16px;
-	position: absolute;
-	right: 12px;
-	top: 8px;
-	transform: rotate(90deg);
-	background-size: 100%;
-}
-.dropdown__button--active {
-	border-radius: 0px 0px 5px 5px;
-	border-color: #BA9D5A;
-	color: #BA9D5A;
-}
-.dropdown__button--active:after {
-	transform: rotate(270deg);
-	background-size: 100%;
-}
 .dropdown__list {
 	position: absolute;
 	background: #fff;
@@ -133,7 +101,6 @@ export default {
 	overflow: hidden;
 }
 .dropdown__items {
-	max-height: 200px;
 	overflow: auto;
 }
 .dropdown__item {
