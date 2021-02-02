@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
 		<button for-id="dropdown:navbar" @click="showDrowdown">show</button>
-		<VueDropDown id="dropdown:navbar" :items="dropdown.items" @onSelected="onSelected" :active="dropdown.active" />
+		<VueDropDown id="dropdown:navbar" :items="dropdown.items" @onSelected="onSelected" :active="dropdown.active" :height="dropdown.height" />
 	</div>
 </template>
 
@@ -14,7 +14,8 @@ export default {
 		return {
 			dropdown: {
 				active: "apple",
-				items: ["apple", "orange", "banana"]
+				items: ["apple", "orange", "banana"],
+				height: 100
 			}
 		}
 	},

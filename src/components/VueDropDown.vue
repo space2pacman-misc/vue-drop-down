@@ -1,7 +1,7 @@
 <template>
 	<div class="dropdown">
 		<div class="dropdown__list" v-if="isOpen">
-			<div class="dropdown__items">
+			<div class="dropdown__items" :style="`height: ${height || options.height}px`">
 				<div 
 					v-for="(item, index) in items"
 					:key="index"
@@ -22,6 +22,9 @@ export default {
 	data() {
 		return {
 			isOpen: false,
+			options: {
+				height: 200
+			}
 		}
 	},
 	methods: {
@@ -47,7 +50,8 @@ export default {
 	props: {
 		id: String,
 		active: String,
-		items: Array
+		items: Array,
+		height: Number
 	}
 }
 </script>
@@ -100,7 +104,6 @@ export default {
 	overflow: hidden;
 }
 .dropdown__items {
-	
 	max-height: 200px;
 	overflow: auto;
 }
