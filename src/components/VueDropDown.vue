@@ -43,18 +43,8 @@ export default {
 			if(event.target.getAttribute("for-id") !== this.id) {
 				this.isOpen = false;
 			}
-		}
-	},
-	computed: {
-		getListHeight() {
-			return this.count > 0 ? this.height : false;
-		}
-	},
-	mounted() {
-		this.$root.$on("vuedropdown:show", this.onDropdownShow);
-		document.body.addEventListener("click", this.onDocumentClick);
-
-		if(this.count > 0) {
+		},
+		showItems() {
 			this.isOpen = true;
 
 			this.$nextTick(() => {
@@ -68,6 +58,19 @@ export default {
 
 				this.isOpen = false;
 			})
+		}
+	},
+	computed: {
+		getListHeight() {
+			return this.count > 0 ? this.height : false;
+		}
+	},
+	mounted() {
+		this.$root.$on("vuedropdown:show", this.onDropdownShow);
+		document.body.addEventListener("click", this.onDocumentClick);
+
+		if(this.count > 0) {
+			this.showItems();
 		}
 	},
 	props: {
