@@ -1,12 +1,13 @@
 <template>
 	<div class="dropdown">
-		<div class="dropdown__list" v-if="isOpen">
-			<div class="dropdown__items" :style="`height: ${height || options.height}px`">
+		<div class="dropdown__list" v-show="isOpen">
+			<div class="dropdown__items" :style="`height: ${this.getListHeight}px`">
 				<div 
 					v-for="(item, index) in items"
 					:key="index"
 					:class="{ 'dropdown__item--active': item === active }"
 					class="dropdown__item"
+					ref="dropdown__item"
 					@click="onSelect(item)"
 				>
 					{{ item }}
@@ -22,6 +23,7 @@ export default {
 	data() {
 		return {
 			isOpen: false,
+			height: 0,
 			options: {
 				height: 200
 			}
@@ -43,15 +45,39 @@ export default {
 			}
 		}
 	},
+	computed: {
+		getListHeight() {
+			return this.count > 0 ? this.height : false;
+		}
+	},
 	mounted() {
 		this.$root.$on("vuedropdown:show", this.onDropdownShow);
 		document.body.addEventListener("click", this.onDocumentClick);
+
+		if(this.count > 0) {
+			this.isOpen = true;
+
+			this.$nextTick(() => {
+				for(let i = 0; i < this.count; i++) {
+					if(this.$refs["dropdown__item"][i]) {
+						let item = this.$refs["dropdown__item"][i];
+
+						this.height += item.offsetHeight;
+					}
+				}
+
+				this.isOpen = false;
+			})
+		}
 	},
 	props: {
 		id: String,
 		active: String,
 		items: Array,
-		height: Number
+		count: {
+			type: Number,
+			default: 0
+		}
 	}
 }
 </script>
