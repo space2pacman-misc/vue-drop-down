@@ -1,24 +1,32 @@
 # vue-drop-down
 
-## Project setup
-```
-npm install
+## Install
+
+```bash
+npm install vue-drop-down
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+```vue
+<template>
+  <div>
+    <VueDropDown id="dropdown:navbar-01" :items="dropdown.items" @onSelected="onSelected" :active="dropdown.active" :count="dropdown.count" />
+  </div>
+</template>
 
-### Compiles and minifies for production
-```
-npm run build
-```
+<script>
+  import Multiselect from "vue-drop-down";
 
-### Lints and fixes files
-```
-npm run lint
-```
+  export default {
+    data () {
+      return {
+        options: ['list', 'of', 'options']
+      }
+    },
+    components: {
+      Multiselect
+    },
+  }
+</script>
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+```
