@@ -4,7 +4,11 @@
 		<VueDropDown style="width: 300px" id="dropdown:navbar-01" :items="dropdown.items" @onSelected="onSelected" :active="dropdown.active" :count="dropdown.count" />
 		<hr>
 		<button for-id="dropdown:navbar-02" @click="showDrowdown('dropdown:navbar-02')">show</button>
-		<VueDropDown style="width: 300px" id="dropdown:navbar-02" :items='["123", "321", "33", "looooooooooooooooooooooooooooong banane", "melon"]' @onSelected="onSelected" :active="dropdown.active" />
+		<VueDropDown style="width: 300px" id="dropdown:navbar-02" :items='["123", "321", "33", "looooooooooooooooooooooooooooong banane", "melon"]' @onSelected="onSelected" :active="dropdown.active">
+			<template v-slot:bottom>
+				<div class="dropdown__reset">Сбросить выбор</div>
+			</template>
+		</VueDropDown>
 	</div>
 </template>
 

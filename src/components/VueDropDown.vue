@@ -13,7 +13,7 @@
 					{{ item }}
 				</div>
 			</div>
-			<div class="dropdown__reset">Сбросить выбор</div>
+			<slot name="bottom"></slot>
 		</div>
 	</div>
 </template>
